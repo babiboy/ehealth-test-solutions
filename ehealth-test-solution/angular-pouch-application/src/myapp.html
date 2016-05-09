@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular PouchDEB App</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-pouchdb/dist/angular-pouchdb.js"></script>
+    <script src="../node_modules/pouchdb/dist/pouchdb.js"></script>
+    <script src="myapp.js"></script>
+</head>
+<body ng-app="myapp">
+<div ng-controller="AppCtrl">
+
+    <button  ng-click="add()">Add</button><br/>
+    <input type="text" ng-model="text" />
+    <div>
+        <ul>
+            <li ng-repeat="doc in docs">
+                {{doc.change.doc.text}}
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

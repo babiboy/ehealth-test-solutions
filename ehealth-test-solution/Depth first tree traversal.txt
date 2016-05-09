@@ -1,0 +1,66 @@
+/* DEPTH FIRST TREE TRAVERSAL 
+Discuss an algorithm to traverse a tree, depth first. */
+
+
+
+
+//Answer
+
+    Depth first tree traversal involves starting at the root of the tree and following a path (or branch) of the tree until the last node for the path is reached, then backtracking and following the next path until it's last node is reached and so on until there are no more paths left.
+        
+    
+                                 [a]
+                                / | \
+                              [b][f][j]
+                             /    |    \
+                           [c]   [g]    [k]
+                            |     |      |
+                           [d]   [h]    [l]
+                          / |     |      | \
+                        [n][e]   [i]    [m][o]
+    
+    Using the tree (graph) above, a depth first traversal starting at [a] and 
+    from the left would report nodes (vertexes) traversed as thus:
+        -> a, b, c, d, n, e, f, g, h, i, j, k, l, m and o
+    
+    pseudocode:
+    procedure depth_first_traversal(tree, node):
+        node.visited = True
+        for child in node.childnodes():
+            if not child.visited:
+                dept_first_search(tree, child)
+    
+    
+    The pseudocode above performs depth first search of a tree in a recursive
+    manner. 
+    
+     1. The traversal begins by passing the tree and root (say [a]) to the
+        function 'depth_first_traversal'
+        
+     2. It marks [a] as visited in order to prevent processing a node more than
+        once. The child nodes of the current nodes are then retrieved [b, f, j].
+        One is picked (say [b]) and if it has not been visited another call to 
+        depth_first_traversal' is made passing the tree and [b]. Otherwise [f]
+        would be picked or [j] if [f] has been visited.
+        
+     3. The child nodes of the node picked in (2.) say [b] is then processed. It
+        is marked visited. Then its child nodes are processed as in step (2.).
+        Since it has just a single node, the function is called if [d] is yet to
+        be visited else function terminates and returns to the outer call which
+        would step to the next child node for node [a].
+        
+     4. The child nodes of the node picked in (3.) [d] would then be processed.
+        First 'depth_first_traversal(tree, [n]). [n] is marked visited and since
+        it has not children, the next child node of [d] node [e] is processed as
+        'depth_first_traversal(tree, [e]).
+     
+     5. Having reached the depth for the branch starting with node [b], all
+        recursive call wrap up and then processing takes off for the next [a]
+        child node and so on until the whole tree nodes have been visited.
+
+        
+
+
+
+
+
